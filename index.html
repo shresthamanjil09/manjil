@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asking for LOVE</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<style>
+    body{
+    padding: 0;
+    margin: 0;
+    background-color: #c060a1;
+}
+
+body.yes{
+    background-color: #ff8dc7;
+    background-image: url('https://shorturl.at/ilmAC');
+    background-size: cover;
+}
+
+body.yes .confirm{
+    display: block;
+}
+
+body.yes .dialog{
+    display: block;
+}
+
+.heart{
+    animation: heartbeat 1s infinite;
+    background-color: red;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 5px;
+}
+
+.heart::before,
+.heart::after{
+    content: '';
+    background-color: red;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+}
+
+.heart::before{
+    top: -5px;
+    left: 0;
+}
+
+.heart::after{
+    top: 0;
+    left: 5px;
+}
+
+@keyframes heartbeat  {
+    0%{
+        transform: scale(1);
+    }
+    20%{
+        transform: scale(1.25);
+    }
+    40%{
+        transform: scale(1.5);
+    }
+}
+
+.confirm{
+    min-width: 350px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #b0498d;
+    box-shadow: 3px 3px 3px #7e3a68;
+    border-radius: 5px;
+}
+
+.confirm__container{
+    padding: 10px;
+}
+
+.confirm__container .title{
+    color: #fff;
+    text-align: center;
+    font-size: 22px;
+}
+
+.confirm__actions{
+    display: flex;
+    column-gap: 10px;
+}
+
+.confirm__actions button{
+    width: 100%;
+    cursor: pointer;
+    font-size: 10px;
+    border: none;
+    padding: 5px;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.confirm__actions .btn-yes{
+    background-color: #a3ddcb;
+}
+
+.confirm__actions .btn-no{
+    position: relative;
+    background-color: #e97777;
+}
+
+.dialog{
+    display: none;
+    min-width: 350px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f261ac;
+    box-shadow: 3px 3px 3px rgb(160, 69, 116);
+    border-radius: 5px;
+    font-size: 22px;
+}
+
+.dialog__container{
+    padding: 15px 5px;
+}
+
+.dialog__container p{
+    color:#fff;
+    text-align: center;
+}
+
+
+</style>
+
+<body>
+    <div class="confirm js-confirm">
+        <div class="confirm__container">
+            <p class="title">Can you love me back? <span class="heart"></span></p>
+            <div class="confirm__actions">
+                <button class="btn-yes js-yes">YES</button>
+                <button class="btn-no js-no">NO</button>
+            </div>
+        </div>
+
+        <div class="dialog js-dialog">
+            <div class="dialog__container">
+                <p>When you say love, you know it's just 'you'
+                More than love
+                Rather than having to turn my back on the whole world
+                To the point where I'm more afraid to turn my face away from you.
+                    <span class="heart"></span>
+                </p>
+                <p>I love you so much!. <span class="heart"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        const $btnYes = document.querySelector('.js-yes'),
+                $btnNo = document.querySelector('.js-no'),
+                $confirm = document.querySelector('.js-confirm'),
+                $dialog = document.querySelector('.js-dialog'),
+                $body = document.querySelector('body')
+
+            let counter = 0
+
+            $btnYes.addEventListener('mouseover', (e) => {
+                e.target.innerHTML = 'YES😁'
+            })
+
+            $btnYes.addEventListener('click', () => {
+                $body.classList.add('yes')
+            })
+
+            $btnNo.addEventListener('mouseover', (e) => {
+                const $target = e.target
+
+                $target.style.top = `${Math.random() * 200}px`
+                $target.style.right = `${Math.random() * 200}px`
+
+                if (counter >= 5) {
+                    $target.innerHTML = 'Hummmm'
+                }
+
+                counter += 1
+            })
+    </script>
+</body>
+
+</html>
